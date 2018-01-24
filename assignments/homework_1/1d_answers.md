@@ -1,6 +1,8 @@
-1)n = -3  //a[1] = -3
+1) n = -3  
+//a[1] = -3
 
-2)n = 2   //only a[1] and a[4] cause n to be incremented
+2) n = 2   
+//only a[1] and a[4] cause n to be incremented
 
 3)
 
