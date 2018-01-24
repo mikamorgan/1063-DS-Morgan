@@ -4,47 +4,27 @@
 2) n = 2   
 //only a[1] and a[4] cause n to be incremented
 
-3)
+3) n = 7
+//the initial value of a[2], 6, was incremented by 1 and reassigned to a[2]
 
-  int n;
-  for (int i=0; i<6; i++) {
-    a[i] = a[i]+1;
-  }
-  n = a[2];
-n = 
-4)
+4) n = 2
+//n will increment when a number is repeated later in the array, so values -3 and 6 both add 1 to n
 
-  int n = 0;
-  for (int i=0; i<5; i++) {
-    for (int j=i+1; j<6; j++) {
-      if (a[i] == a[j]) {
-         n++;
-      }
-    }
-  }
-n = 
-5)
+5) n = 1
+//a[3] = 0, 0 + 1 = 1
 
-n = a[3]+1;
-n = 
-6)
+6) n = -3
+//a[4] = -3
 
-n = a[3+1];
-n = 
-7)
+7) n = -2
+//a[4] = -3, -3 + 1 = -2
 
-n = a[3+1]+1;
-n = 
-8)
+8) n = 22
+//a[4] = -3, a[1] = 25, -3 + 25 = 22
 
-n = a[3+1]+a[1];
-n = 
-9)
+9) a = {25, -3, 6, 0, 1, 6};
+//a[3] = 0, 0 + 1 = 1, this value gets reassigned to a[4]
 
-What does the array look like after the following:
-
-a[3+1] = a[3]+1;
-a = 
 10)
 
 a[3] = a[3]+a[1+3]*2;
