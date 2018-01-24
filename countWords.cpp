@@ -3,6 +3,7 @@
 #include <fstream>
 using namespace std;
 
+  //create a struct that will correlate words with their counts
 struct wordNode{
   string word;
   int count;
@@ -22,7 +23,7 @@ int main() {
     }
   
   while(myFile.is_open() && !myFile.eof()){
-    //read in word
+    //read in one word at a time
     myFile >> word;
     
     //set first word in file to index 0 of array
@@ -31,6 +32,9 @@ int main() {
       wordArray[0].count = 1;
       wordCount++;
     }
+    
+    //check each subsequent word in file against all words currently in array
+    //if a match is found, increment the counter for that word
     else{
       for(int i = 0; i < wordCount; i++)
       {
@@ -40,6 +44,7 @@ int main() {
            found = true;
          }
       }
+    //if no match is found, add the word as a new element in the array
       if(!found){
         wordArray[wordCount].word = word;
         wordArray[wordCount].count = 1;
@@ -47,6 +52,8 @@ int main() {
       }
     }
   }
+  
+  //print out each word in the array followed by its count. Separate words with a blank line
   for(int i = 0; i < wordCount; i++){
     cout << "Word: " << wordArray[i].word << "\nCount: " << wordArray[i].count << endl << endl;
   }
