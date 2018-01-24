@@ -44,6 +44,7 @@ int main() {
            found = true;
          }
       }
+      
     //if no match is found, add the word as a new element in the array
       if(!found){
         wordArray[wordCount].word = word;
