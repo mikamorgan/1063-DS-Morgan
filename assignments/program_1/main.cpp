@@ -58,13 +58,21 @@ struct rgb{
 *    void
 */
 void flipVert(rgb** image,int width,int height){
-    int temp[width] = {0};
+    rgb temp[width] = {0};
 
 for(int row = 0; row < (height / 2); row++){
   for(int col = 0; col < width; col++){
-    temp[col] = image[row][col];
-    image[row][col] = image[height - 1 - row][col];
-    image[height - 1 - row][col] = temp[col];
+    temp[col].r = image[row][col].r;
+    temp[col].b = image[row][col].b;
+    temp[col].g = image[row][col].g;
+      
+    image[row][col].r = image[height - 1 - row][col].r;
+    image[row][col].b = image[height - 1 - row][col].b;
+    image[row][col].g = image[height - 1 - row][col].g;
+      
+    image[height - 1 - row][col].r = temp[col].r;
+    image[height - 1 - row][col].b = temp[col].b;
+    image[height - 1 - row][col].g = temp[col].g;
   }
 }
 }
@@ -86,9 +94,17 @@ void flipHorz(rgb** image,int width,int height){
 
 for(int col = 0; col < (width / 2); col++){
    for(int row = 0; row < height; row++){
-    temp[row] = image[row][col];
-    image[row][col] = image[row][width - 1 - col];
-    image[row][width - 1 - col] = temp[row];
+    temp[row].r = image[row][col].r;
+    temp[row].b = image[row][col].b;
+    temp[row].g = image[row][col].g;
+       
+    image[row][col].r = image[row][width - 1 - col].r;
+    image[row][col].b = image[row][width - 1 - col].b;
+    image[row][col].g = image[row][width - 1 - col].g;
+       
+    image[row][width - 1 - col].r = temp[row].r;
+    image[row][width - 1 - col].b = temp[row].b;
+    image[row][width - 1 - col].g = temp[row].g;
   }
 }
 }
@@ -152,6 +168,7 @@ int main(){
     }
     
     //We could make any changes we want to the color image here
+    
     
     //Write out our color data to a new file
     ofile<<width<<" "<<height<<endl;
