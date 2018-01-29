@@ -80,9 +80,9 @@ void flipHorz(rgb** image,int width,int height){
 
 for(int col = 0; col < (width / 2); col++){
    for(int row = 0; row < height; row++){
-    temp[row] = image[col][row];
-    image[col][row] = image[15 - 1 - col][row];
-    image[width - 1 - col][row] = temp[row];
+    temp[row] = image[row][col];
+    image[row][col] = image[row][width - 1 - col];
+    image[row][width - 1 - col] = temp[row];
   }
 }
 }
