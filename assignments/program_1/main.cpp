@@ -90,7 +90,7 @@ for(int row = 0; row < (height / 2); row++){
 */
 
 void flipHorz(rgb** image,int width,int height){
-    int temp[height] = {0};
+    rgb temp[height] = {0};
 
 for(int col = 0; col < (width / 2); col++){
    for(int row = 0; row < height; row++){
