@@ -38,6 +38,12 @@ struct rgb{
     int r;
     int g;
     int b;
+    
+    rbg(){
+        r = 0;
+        g = 0;
+        b = 0;
+    }
 };
 
 /**
@@ -99,7 +105,20 @@ for(int col = 0; col < (width / 2); col++){
 *    void
 */
 void grayScale(rgb** image,int width,int height){
-    // your code
+        for(int row = 0; row < height; row++){
+          for(int col =0; col < width; col++){
+              int r = image[row][col].r;
+              int g = image[row][col].g;
+              int b = image[row][col].b;
+              
+              int gray = (r+g+b)/3;
+              
+              image[row][col].r = gray;
+              image[row][col].g = gray;
+              image[row][col].b = gray;
+          }
+      }
+  }
 }
 
 int main(){
