@@ -123,6 +123,34 @@ void grayScale(rgb** image,int width,int height){
       }
   }
 
+/**
+* @FunctionName: invert
+* @Description: 
+*     Loops through a 2D array and turns every RGB value to the color complement.
+* @Params:
+*    rgb** image - 2D array holding rgb values
+*    int width - width of image
+*    int height - height of image
+* @Returns:
+*    void
+*/
+void invert(rgb** image,int width,int height){
+     for(int row = 0; row < height; row++){
+        for(int col =0; col < width; col++){
+              
+          //grab and store the current RGB values of each pixel
+            int r = image[row][col].r;
+            int g = image[row][col].g;
+            int b = image[row][col].b;
+   
+          //flip and reassign each RGB
+            image[row][col].r = (255 - r);
+            image[row][col].g = (255 - g);
+            image[row][col].b = (255 - b);
+          }
+      }
+  }
+
 
 int main(){
     ifstream ifile;          //Input / output files
@@ -162,6 +190,9 @@ int main(){
     
     //Flip the image horizontally
     flipHorz(imgArray, width, height);
+    
+    //Invert each color to its complement
+    invert(imgArray, width, height);
     
     //Write out our color data to a new file
     ofile<<width<<" "<<height<<endl;
