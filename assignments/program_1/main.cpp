@@ -1,3 +1,15 @@
+/**
+* @ProgramName: Program-1
+* @Author: Mika Morgan 
+* @Description: 
+*     This program reads in images stored as rgb values in a space delimited file format.
+*     Various functions manipulate the images by flipping them vertically and horizontally, 
+*     changing the images to grayscale, and inverting the image colors.
+* @Course: 1063 Data Structures
+* @Semester: Spring 2018
+* @Date: 09 02 2018
+*/
+
 #include<iostream>
 #include<fstream>
 #include<math.h>
