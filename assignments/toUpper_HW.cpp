@@ -2,7 +2,7 @@
 * @ProgramName: toUpper Function Homework
 * @Author: Mika Morgan
 * @Description: 
-*     This program returns a given string in all lowercase or       all uppercase letters, using two functions
+*     This program returns a given string in all lowercase or all uppercase letters, using two functions
 * @Course: 1063 Data Structures
 * @Semester: Spring 2018
 * @Date: 26 03 2018
