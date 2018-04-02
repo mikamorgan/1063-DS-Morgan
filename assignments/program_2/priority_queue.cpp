@@ -132,7 +132,7 @@ class Queue
  /*
   * Function: push(string)
   * Description:
-  *    
+  *    Adds a new node with an animal name (passed in as a param) in the correct order, depending on word length and alphabetization.
   * Params:
   *    A string, the animal name to be added
   * Returns:
@@ -275,10 +275,12 @@ int main()
     ofstream oFile;
     
     iFile.open("input_data.txt");
-	oFile.open("priority_out.txt");
-
-	oFile << "Animals Popped off the Queue:" << endl << endl;
-
+    oFile.open("priority_out.txt");
+	
+    //Write out the first line
+    oFile << "Animals Popped off the Queue:" << endl << endl;
+	
+	//Loop through the input file, push animals on to the list or pop them off depending on the command given
 	while (iFile >> command) {
 	    if (command == "push") {
 			iFile >> animal;
@@ -289,7 +291,9 @@ int main()
 		    }
      }
     
+   //Write out a blank line and the next output block	
    oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl";
   
+   //Print out the remaining list in order	   
    Q.print(oFile);
 }
