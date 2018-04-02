@@ -166,9 +166,10 @@ class Queue
             }
             
             //check to see if list is only one word (otherwise it will error when you try to traverse the list)
-            else if(n->val > Rear->val){
+            else if((n->len == Rear->len) && (n->val > Rear->val)){
                endSert(v);
             }
+
             
             //else, loop through list and find where the new word is no longer the least, alphabetically
             else{
