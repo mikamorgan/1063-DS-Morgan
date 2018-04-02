@@ -45,12 +45,12 @@ struct Node
  *     to longest; words of equal length will be ordered alphabetically.
  * Methods:
  *  - Queue()               : constructor
- *  - string pop()          : will return the animal name currently at the front of the list
+ *  - string pop()          : will return the animal name currently at the front of a non-empty list
  *  - void push(string)     : will add the animal name (passed in as a param) in the appropriate place in the list
  *  - void frontSert(string): adds the animal name (passed in as a param) to the front of the list
  *  - void endSert(string)  : adds the animal name (passed in as a param) to the rear of the list
  *  - bool empty()          : returns whether or not the list is empty
- *  - void print()          : prints the current list; used only for debugging
+ *  - void print()          : writes the current list to an output file
  */
 
 class Queue
@@ -75,11 +75,12 @@ class Queue
   * Description:
   *    Returns the animal name currently at the front of a non-empty list. Prints error message otherwise.
   * Params:
-  *    None
+  *    File writer access to allow the empty list error message to be output to "priority_out.txt"
+  *    Otherwise, oFile will be outside this method's scope, and will throw an error
   * Returns:
   *    A string, the animal name removed from the list
   */
-    string pop()
+    string pop(ofstream &oFile)
     {
         if (!empty())
         {
@@ -91,7 +92,7 @@ class Queue
         }
         else
         {
-            cout << "error: cannot pop off empty queue." << endl;
+            oFile << "error: cannot pop off empty queue";
             return " ";
         }
     }
@@ -244,47 +245,51 @@ class Queue
  /*
   * Function: print()
   * Description:
-  *    Prints the current list based queue. Only used during debugging.
+  *    Writes the current list based queue to an output file
   * Params:
-  *    None
+  *    File writer access to allow the remaining animal names to be output to "priority_out.txt"
+  *    Otherwise, oFile will be outside this method's scope, and will throw an error
   * Returns:
   *    Void
   */
 
-    void print()
+    void print(ofstream &oFile) 
     {
-        Node *temp = Front;
-        while (temp)
+	    Node *temp = Front;		
+        int num = 1;
+	    while (temp) 
         {
-            cout << temp->val << "->";
-            temp = temp->next;
-        }
-        cout << endl;
-    }
+			oFile << num++ << ": " << temp->val << endl;
+			temp = temp->next;
+		}
+	}
 };
 
 int main()
 {
     Queue Q;
     string command, animal;
+    int num = 1;
     
     ifstream iFile;
+    ofstream oFile;
+    
     iFile.open("input_data.txt");
+	oFile.open("priority_out.txt");
 
+	oFile << "Animals Popped off the Queue:" << endl << endl;
 
-    while (iFile.is_open() && !iFile.eof())
-    {
-        iFile >> command;
-        if(command == "push"){
-          iFile >> animal;
-          Q.push(animal);
-        }
-        else{
-          Q.pop();
-        }
-        //cin >> animal;
-        //cout << animal << endl;
-      Q.print();
-      cout << endl;
-    }
+	while (iFile >> command) {
+	    if (command == "push") {
+			iFile >> animal;
+			Q.push(animal);
+		    }
+		else {
+			oFile << num++ << ": " << Q.pop(oFile) << endl;
+		    }
+     }
+    
+   oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl";
+  
+   Q.print(oFile);
 }
