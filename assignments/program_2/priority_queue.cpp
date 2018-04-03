@@ -201,15 +201,19 @@ class Queue
             //else, loop through list and find where the new word is no longer the least, alphabetically
             else{
              Node *temp = Front;
-              while (n->len >= temp->next->len && (n->val > temp->next->val))
-                {
-                  temp = temp->next;
-                }
+        		while((n->len > temp->next->len) && (temp->next != NULL)) 
+	          	{
+		          temp = temp->next;
+		          }
+		        while ((n->len >= temp->next->len) && (n->val > temp->next->val)) 
+		          {
+		         temp = temp->next;
+		          }
                 
               //once the loop finds the correct location, perform an insertion in the middle of the list  
               n->next = temp->next;
               temp->next = n;
-           }
+          }
           }
           
         //the word is not less than or equal to the front, or greater than or equal to the rear
@@ -268,6 +272,16 @@ class Queue
 			temp = temp->next;
 		}
 	}
+	
+	    void print() 
+    {
+	    Node *temp = Front;		
+	    while (temp) 
+        {
+			cout << temp->val << "->" << endl;
+			temp = temp->next;
+		}
+	}
 };
 
 int main()
@@ -294,10 +308,10 @@ int main()
 		else {
 			oFile << num++ << ": " << Q.pop(oFile) << endl;
 		    }
-     }
+	     }
     
    //Write out a blank line and the next output block	
-   oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl;
+   oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl << endl;
   
    //Print out the remaining list in order	   
    Q.print(oFile);
