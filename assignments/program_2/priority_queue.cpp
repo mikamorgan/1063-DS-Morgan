@@ -216,7 +216,7 @@ class Queue
         //start at the front and loop until you find the correct placement for the word length
         else{
           Node *temp = Front;
-		while((n->len >= temp->next->len) && (temp->next != NULL)) 
+		while((n->len > temp->next->len) && (temp->next != NULL)) 
 		{
 		    temp = temp->next;
 		}
