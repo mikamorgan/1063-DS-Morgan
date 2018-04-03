@@ -297,7 +297,7 @@ int main()
      }
     
    //Write out a blank line and the next output block	
-   oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl";
+   oFile << endl << "Animals Remaining on the Queue(in order of priority):" << endl;
   
    //Print out the remaining list in order	   
    Q.print(oFile);
