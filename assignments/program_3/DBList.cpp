@@ -59,18 +59,19 @@ void DBList::Insert(Node* &Temp){
   if(!Head){
     Head = Temp;
     Tail = Temp;
-    Tail->Next = Head;
     Current = Temp;
+    Tail->Next = Head;
+    Tail->Prev = Head;
+    Head->Next = Tail;
     Head->Prev = Tail;
-    
-  }else{
+   }
+  else{
     Temp->Next = Head;
     Temp->Prev = Tail;
     Head->Prev = Temp;
     Tail->Next = Temp;
-    Head = Temp;
-    Current = Head;
-  }
+    Tail = Temp;
+   }
 }
 
 /**
