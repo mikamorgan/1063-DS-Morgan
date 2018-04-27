@@ -20,6 +20,7 @@ using namespace std;
 int main() {
   DBList List;
   string a;
+  string temp;
   int multiply;
   int listCount = 0;
   ifstream fin("animals.txt");
@@ -42,7 +43,8 @@ int main() {
   //Steps Four-Eight: traverse the list and write out animal
     fout << "First: ";
     fin >> a;
-    fout << List.Traverse(a, multiply) << endl;
+    temp = List.Traverse(a, multiply);
+    fout << "-" << temp << endl;
     
   //Step Nine: delete node
     List.Delete(a);
@@ -51,8 +53,9 @@ int main() {
   //Step Ten: repeat until only one animal remains
     for(listCount; listCount > 1; listCount--){
       fin >> a;
-      fout << "-" << List.Traverse(a, multiply) << endl;
-      List.Delete(a);
+      temp = List.Traverse(a, multiply);
+      fout << "-" << temp << endl;
+      List.Delete(temp);
       }
   
   //Step Eleven: declare the winner
