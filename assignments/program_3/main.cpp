@@ -47,14 +47,16 @@ int main() {
     fout << "-" << temp << endl;
     
   //Step Nine: delete node
-    List.Delete(a);
+    List.Delete(temp);
     listCount--;
     
   //Step Ten: repeat until only one animal remains
-    for(listCount; listCount > 1; listCount--){
+    for(int i = 0; i < listCount; i++){
       fin >> a;
       temp = List.Traverse(a, multiply);
-      fout << "-" << temp << endl;
+        //write out every 11th animal "deleted"
+        if(i % 11 == 0)
+          fout << "-" << temp << endl;
       List.Delete(temp);
       }
   
