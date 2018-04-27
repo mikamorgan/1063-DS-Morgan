@@ -107,7 +107,8 @@ string DBList::Traverse(string a, int m){
 
 /**
  * Delete - 
- *     Starts at the beginning of the list and searches for the current a.
+ *     Starts at the beginning of the list and searches for the animal in the current node after the traversal.
+ *     Deletes that node, and relinks the rest of the list.
  * Params:
  *     string: the animal name to be deleted from the list
  * Returns:
@@ -145,10 +146,12 @@ bool DBList::Delete(string x){
   return false; 
 }
 
+//Part of Delete method, used to find the key value
 bool DBList::Find(string x){
   return false;
 }
 
+//Part of Delete method, used to find the key value
 Node* DBList::_Find(string key){
   Node* Temp = Head;
   
@@ -161,6 +164,14 @@ Node* DBList::_Find(string key){
   return NULL;
 }
 
+/**
+ * Winner - 
+ *     Returns the last animal name remaining in the list after looping
+ * Params:
+ *     None
+ * Returns:
+ *     string: the animal name in the head (last remaining node)
+ */
 string DBList::Winner(){
   cout << Head->Data;
 }
